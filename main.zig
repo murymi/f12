@@ -124,7 +124,6 @@ const Geometry = struct {
     fn empty_dirent(entry: []u8, name: []const u8, ext: []const u8) []u8 {
         @memset(entry, 0);
         if (ext.len == 0) {
-            std.debug.print("================dir=================", .{});
             entry[11] |= 0x10;
         }
         const name_size = switch (name.len > 8) {
@@ -443,6 +442,7 @@ pub fn main() !void {
     // std.debug.print("{} {}", .{n, target_file.offset});
 
 }
+
 
 test "fat" {
     const T = std.testing;
