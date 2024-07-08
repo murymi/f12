@@ -3,7 +3,20 @@ const fs = std.fs;
 const Allocator = std.mem.Allocator;
 var gpa = std.heap.GeneralPurposeAllocator(.{}){};
 
-const FatAttr = struct { read_only: bool, hidden: bool, system: bool, volume_label: bool, subdirectory: bool, archive: bool, device: bool, other: bool, long_file_name: bool, empty: bool, free: bool };
+const FatAttr = struct {
+    const Self = @This();
+    read_only: bool,
+    hidden: bool,
+    system: bool,
+    volume_label: bool,
+    subdirectory: bool,
+    archive: bool,
+    device: bool,
+    other: bool,
+    long_file_name: bool,
+    empty: bool,
+    free: bool,
+};
 
 const Geometry = struct {
     bytes_per_sector: u16,
@@ -442,7 +455,6 @@ pub fn main() !void {
     // std.debug.print("{} {}", .{n, target_file.offset});
 
 }
-
 
 test "fat" {
     const T = std.testing;
